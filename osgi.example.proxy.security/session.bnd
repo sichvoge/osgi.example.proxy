@@ -1,0 +1,3 @@
+Private-Package: security.session.impl
+Export-Package: security.session
+Service-Component: *

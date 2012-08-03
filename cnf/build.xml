@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="master" default="none">
+	
+	<import file="build-template.xml"/>
+	
+	<!--
+		Use this file to provide your workspace-specific tasks. Several examples follow.
+		
+		1. To execute tasks before/after compilation:
+		
+		<target name="compile">
+			<echo message="This task executed before compilation..."/>
+			<antcall target="template.compile"/>
+			<echo message="This task executed AFTER compilation."/>
+		</target>
+		
+		2. Insert a build target:
+		
+		<target name="build" dependencies="template.build, findbugs"/>
+		<target name="findbugs">
+			...
+		</target>
+	-->
+	<target name="compile-test" depends="build">
+		<property name="testpath" location="${project}/test" />
+		<property name="testoutput" location="${project}/bin_test" />
+		
+		<property name="junitlibdir" value="${workspacedir}/cnf/plugins/junit" />
+					
+		<mkdir dir="${testoutput}"/>
+		<javac fork="yes" executable="${javac}" srcdir="${testpath}" destdir="${testoutput}" 
+			bootclasspath="${project.bootclasspath}" deprecation="true" 
+			listfiles="true" target="${javac.target}" source="${javac.source}" debug="${javac.debug}" 
+			includeAntRuntime="no" verbose="${verbose}">
+			<classpath path="${project.buildpath}">
+				<fileset dir="${junitlibdir}">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+		</javac>
+		<copy todir="${testoutput}" verbose="${verbose}" preservelastmodified="true">
+			<fileset dir="${testpath}">
+				<exclude name="**/*.java" />
+				<exclude name="**/*.class" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="junit" depends="compile-test">			
+		<junit printsummary="true" showoutput="true">			
+			<classpath path="${project.buildpath}:bin_test/">
+				<fileset dir="${junitlibdir}">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+			<formatter type="xml"/>
+			<batchtest todir="${target}" >
+				<fileset dir="test">
+					<include name="**/**.java"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+</project>

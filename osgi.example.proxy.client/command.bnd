@@ -1,0 +1,2 @@
+Private-Package: osgi.example.proxy.command
+Service-Component: *

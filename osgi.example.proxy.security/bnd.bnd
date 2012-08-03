@@ -1,0 +1,5 @@
+-buildpath: osgi.core;version=4.3.0.201102171602,\
+	slf4j.api,\
+	biz.aQute.bnd.annotation,\
+	osgi.cmpn;version=4.2.1.201001051203
+-sub: *.bnd

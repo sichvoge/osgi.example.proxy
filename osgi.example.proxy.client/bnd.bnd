@@ -1,0 +1,6 @@
+-buildpath: osgi.core;version=4.3.0.201102171602,\
+	biz.aQute.bnd.annotation,\
+	org.apache.felix.shell,\
+	osgi.example.proxy.security.annotation;version=latest,\
+	osgi.example.proxy.security.session;version=latest
+-sub: *.bnd

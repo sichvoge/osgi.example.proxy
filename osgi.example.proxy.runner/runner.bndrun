@@ -1,0 +1,21 @@
+-runfw: org.apache.felix.framework;version='[4,5)'
+
+-runbundles: org.service.hooks.proxy.command;resolution=file:/C:/Users/christian.vogel/workspace/org.service.hooks.proxy/generated/org.service.hooks.proxy.command.jar;version=latest,\
+	security.session;resolution=file:/C:/Users/christian.vogel/workspace/security/generated/security.session.jar;version=latest,\
+	org.apache.felix.scr;resolution=file:/C:/Users/christian.vogel/workspace/cnf/repo/org.apache.felix.scr/org.apache.felix.scr-1.6.0.jar;version='[1.6.0,1.6.1)',\
+	security.proxy;resolution=file:/C:/Users/christian.vogel/workspace/security/generated/security.proxy.jar;version=latest,\
+	org.service.hooks.proxy.client;resolution=file:/C:/Users/christian.vogel/workspace/org.service.hooks.proxy/generated/org.service.hooks.proxy.client.jar;version=latest,\
+	osgi.cmpn;resolution=http://bundles.bndtools.org.s3.amazonaws.com/osgi.cmpn/osgi.cmpn-4.2.1.jar;version='[4.2.1,4.2.2)',\
+	security.annotation;resolution=file:/C:/Users/christian.vogel/workspace/security/generated/security.annotation.jar;version=latest,\
+	security.api;resolution=file:/C:/Users/christian.vogel/workspace/security/generated/security.api.jar;version=latest,\
+	org.apache.felix.shell.tui;resolution=file:/C:/Users/christian.vogel/workspace/cnf/repo/org.apache.felix.shell.tui/org.apache.felix.shell.tui-1.4.1.jar;version='[1.4.1,1.4.2)',\
+	org.apache.felix.shell;resolution=file:/C:/Users/christian.vogel/workspace/cnf/repo/org.apache.felix.shell/org.apache.felix.shell-1.4.2.jar;version='[1.4.2,1.4.3)'
+-runrequire: bundle:(symbolicname=org.apache.felix.shell),\
+	bundle:(symbolicname=org.apache.felix.shell.tui),\
+	bundle:(symbolicname=org.service.hooks.proxy.client),\
+	bundle:(symbolicname=org.service.hooks.proxy.command),\
+	bundle:(symbolicname=security.annotation),\
+	bundle:(symbolicname=security.api),\
+	bundle:(symbolicname=security.proxy),\
+	bundle:(symbolicname=security.session),\
+	bundle:(symbolicname=org.apache.felix.scr)

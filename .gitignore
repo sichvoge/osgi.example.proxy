@@ -1,3 +1,9 @@
+.metadata
+bin/**
+bin_test/**
+
+**/generated/**
+
 *.class
 
 # Package Files #
